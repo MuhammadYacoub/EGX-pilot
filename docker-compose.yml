@@ -1,0 +1,99 @@
+# Docker Compose for EGXpilot Production
+version: '3.8'
+
+services:
+  # Main Application
+  egxpilot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: egxpilot-app
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=sqlserver
+      - DB_USER=ya3qoup
+      - DB_PASSWORD=curhi6-qEbfid
+      - DB_NAME=egxpilot
+      - REDIS_HOST=41.38.217.73
+      - REDIS_PASSWORD=curhi6-qEbfid
+    networks:
+      - egxpilot-network
+    volumes:
+      - ./logs:/var/log/egxpilot
+      - ./data:/app/data
+    depends_on:
+      - redis
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: egxpilot-redis
+    restart: unless-stopped
+    command: redis-server --requirepass curhi6-qEbfid --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - egxpilot-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: egxpilot-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - ./public:/var/www/html:ro
+    networks:
+      - egxpilot-network
+    depends_on:
+      - egxpilot-app
+
+  # Monitoring
+  monitoring:
+    image: prom/prometheus:latest
+    container_name: egxpilot-monitoring
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    networks:
+      - egxpilot-network
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+
+networks:
+  default:
+    external: true
+    name: sla-api_app-network
+
+volumes:
+  redis-data:
+    driver: local
+  prometheus-data:
+    driver: local

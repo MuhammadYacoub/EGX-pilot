@@ -1,0 +1,52 @@
+[Unit]
+Description=EGXpilot Smart Financial Advisor
+Documentation=https://github.com/ya3qoup/EGXpilot
+After=network.target network-online.target
+Wants=network-online.target
+Requires=redis.service
+
+[Service]
+Type=simple
+User=ya3qoup
+Group=ya3qoup
+WorkingDirectory=/var/www/egxpilot
+Environment=NODE_ENV=production
+Environment=PORT=5000
+Environment=HOST=0.0.0.0
+
+# Application startup
+ExecStart=/usr/bin/node backend/server.js
+ExecReload=/bin/kill -HUP $MAINPID
+
+# Restart policy
+Restart=always
+RestartSec=10
+StartLimitBurst=3
+StartLimitInterval=60
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=32768
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/www/egxpilot /var/log/egxpilot /tmp
+
+# Logging
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=egxpilot
+
+# Health check
+TimeoutStartSec=60
+TimeoutStopSec=30
+
+# Process management
+KillMode=mixed
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target
