@@ -128,7 +128,7 @@ class DataCollectorService {
         try {
             // Clear existing data for this stock first
             if (dataPoints.length > 0) {
-                await sql.query`DELETE FROM StockData WHERE stock_id = ${dataPoints[0].stock_id}`;
+                await sql.query`DELETE FROM StockData WHERE StockId = ${dataPoints[0].stock_id}`;
             }
             
             // Insert new data in batches
@@ -139,10 +139,10 @@ class DataCollectorService {
                 for (const point of batch) {
                     await sql.query`
                         INSERT INTO StockData (
-                            stock_id, date, open_price, high_price, low_price, 
-                            close_price, volume, created_at
+                            StockId, Date, TimeFrame, [Open], [High], [Low], 
+                            [Close], Volume, CreatedAt
                         ) VALUES (
-                            ${point.stock_id}, ${point.date}, ${point.open_price}, 
+                            ${point.stock_id}, ${point.date}, '1d', ${point.open_price}, 
                             ${point.high_price}, ${point.low_price}, ${point.close_price}, 
                             ${point.volume}, ${point.created_at}
                         )
@@ -253,15 +253,15 @@ class DataCollectorService {
         try {
             const result = await sql.query`
                 SELECT TOP ${days}
-                    date,
-                    open_price,
-                    high_price,
-                    low_price,
-                    close_price,
-                    volume
+                    Date,
+                    [Open] as open_price,
+                    [High] as high_price,
+                    [Low] as low_price,
+                    [Close] as close_price,
+                    Volume
                 FROM StockData
-                WHERE stock_id = ${stockId}
-                ORDER BY date DESC
+                WHERE StockId = ${stockId}
+                ORDER BY Date DESC
             `;
             
             return result.recordset.reverse(); // Return chronological order
