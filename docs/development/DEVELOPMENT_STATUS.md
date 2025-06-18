@@ -186,3 +186,71 @@ The system is now ready for:
 ---
 
 *This iteration establishes a solid foundation for the EGXpilot smart financial advisor system. The next iteration should focus on user interface development and real-time features to create a complete trading platform.*
+
+
+---
+# تحديث: تنظيم المشروع
+2025-06-18
+
+# ملخص ترتيب مشروع EGXpilot
+
+## الملفات التي تم حذفها/نقلها:
+- ❌ `egxpilot.log`, `egxpilot.pid`, `quick-start.log` - ملفات مؤقتة
+- 📁 نقل ملفات الاختبار اليدوي إلى `tests/manual/`
+- 🗂️ نسخ احتياطي من `config/production.js` إلى `config/production.js.backup`
+
+## الملفات الجديدة التي تم إنشاؤها:
+- ✅ `.eslintrc.js` - إعدادات ESLint
+- ✅ `jest.config.js` - إعدادات Jest للاختبارات
+- ✅ `.env.test` - متغيرات بيئة الاختبار
+- ✅ `tests/setup.js` - إعداد الاختبارات
+- ✅ `frontend/package.json` - إعدادات Frontend
+- ✅ `CHANGELOG.md` - سجل التغييرات
+- ✅ `CONTRIBUTING.md` - دليل المساهمة
+- ✅ `config/environments/development.js` - إعدادات التطوير
+- ✅ `config/environments/test.js` - إعدادات الاختبار
+- ✅ `config/environments/production.js` - إعدادات الإنتاج
+
+## التحسينات المطبقة:
+- 🔧 تنظيم إعدادات البيئة في مجلد منفصل
+- 📝 تحديث `package.json` scripts
+- 🗂️ إنشاء مجلدات مفقودة: `docs/api`, `docs/deployment`, `coverage`, `temp`
+- ⚙️ تحديث `config/environment.js` لاستخدام النظام الجديد
+- 🧹 تنظيف الملفات المؤقتة
+
+## البنية الجديدة المنظمة:
+```
+EGXpilot/
+├── backend/              # Backend code
+├── frontend/             # Frontend code (Next.js ready)
+├── config/               # Configuration files
+│   └── environments/     # Environment-specific configs
+├── database/             # Database scripts
+├── docs/                 # Documentation
+├── logs/                 # Application logs
+├── scripts/              # Utility scripts
+├── tests/                # Test files
+│   ├── unit/            # Unit tests
+│   ├── integration/     # Integration tests
+│   ├── e2e/             # E2E tests
+│   └── manual/          # Manual test scripts
+├── coverage/             # Test coverage reports
+└── temp/                # Temporary files
+```
+
+## الأوامر الجديدة المتاحة:
+- `npm run test:coverage` - تشغيل الاختبارات مع تقرير التغطية
+- `npm run test:unit` - اختبارات الوحدة
+- `npm run test:integration` - اختبارات التكامل
+- `npm run test:e2e` - اختبارات شاملة
+- `npm run format` - تنسيق الكود
+- `npm run clean` - تنظيف الملفات المؤقتة
+- `npm run clean:logs` - تنظيف ملفات السجلات
+
+## الحالة الحالية:
+✅ المشروع منظم ويعمل بنجاح
+✅ قاعدة البيانات متصلة
+✅ Redis يعمل
+✅ API endpoints تعمل
+⚠️  Opportunity Hunter معطل مؤقتاً للتطوير
+🔧 جاهز للتطوير والاختبار

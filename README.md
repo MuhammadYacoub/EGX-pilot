@@ -134,11 +134,21 @@ EGXpilot/
 │   ├── services/     # Business logic services
 │   ├── smart-analysis/ # Technical analysis engine
 │   └── utils/        # Helper utilities
+├── config/           # Environment and database configuration
+│   └── environments/ # Environment-specific configs
 ├── database/         # SQL Server schema and migrations
-├── config/          # Environment and database configuration
+├── docker/           # Docker configuration files
+├── docs/            # Documentation
+│   ├── guides/      # User and deployment guides
+│   ├── development/ # Development documentation
+│   └── arabic/      # Arabic documentation
 ├── frontend/        # React application (planned)
+├── scripts/         # Utility scripts (init, deploy, backup)
 ├── tests/           # Test suites
-└── scripts/         # Utility scripts
+│   ├── unit/       # Unit tests
+│   ├── integration/ # Integration tests
+│   └── manual/     # Manual test scripts
+└── logs/           # Application logs
 ```
 
 ### Available Scripts

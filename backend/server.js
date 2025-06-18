@@ -226,9 +226,10 @@ async function initialize() {
     await connectDatabase();
     await connectRedis();
     
-    // Start opportunity hunter
+    // Start opportunity hunter (temporarily disabled for development)
     // await opportunityHunter.initialize();
     // opportunityHunter.startScanning();
+    logger.info('⚠️  Opportunity Hunter temporarily disabled for development');
     
     logger.info('All services initialized successfully');
   } catch (error) {
