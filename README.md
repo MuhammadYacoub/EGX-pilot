@@ -158,6 +158,14 @@ EGXpilot/
 - `npm test` - Run test suite
 - `npm run lint` - Run ESLint
 
+### Running Tests
+Install dependencies before executing the test suite:
+
+```bash
+npm install
+npm test
+```
+
 ### API Testing
 Test the health endpoint:
 ```bash
