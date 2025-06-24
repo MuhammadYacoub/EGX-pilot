@@ -1,0 +1,510 @@
+/* EGXPILOT Advanced Styles - Professional Trading Platform */
+
+/* Advanced Trading Components */
+.price-ticker {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-card);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-primary);
+}
+
+.price-ticker::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.1), transparent);
+  transition: left 2s ease-in-out;
+}
+
+.price-ticker.updating::before {
+  left: 100%;
+}
+
+/* Advanced Chart Overlays */
+.chart-overlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(15, 20, 25, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border-primary);
+  z-index: 10;
+}
+
+/* Trading Action Buttons */
+.trading-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-primary);
+}
+
+.quantity-input {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-primary);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  color: var(--text-primary);
+  width: 100px;
+  text-align: center;
+}
+
+.quantity-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(0, 210, 255, 0.2);
+}
+
+/* Portfolio Performance Indicators */
+.performance-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+}
+
+.performance-indicator.positive {
+  background: rgba(74, 222, 128, 0.1);
+  color: var(--price-up);
+}
+
+.performance-indicator.negative {
+  background: rgba(248, 113, 113, 0.1);
+  color: var(--price-down);
+}
+
+.performance-indicator.neutral {
+  background: rgba(160, 174, 192, 0.1);
+  color: var(--text-secondary);
+}
+
+/* Advanced Data Grids */
+.data-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.data-grid-item {
+  background: var(--bg-card);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-primary);
+  transition: all 0.3s ease;
+}
+
+.data-grid-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1);
+}
+
+/* News Feed Styles */
+.news-item {
+  background: var(--bg-card);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.news-item:hover {
+  border-left-color: var(--primary);
+  background: var(--bg-tertiary);
+}
+
+.news-item.breaking {
+  border-left-color: var(--danger);
+  background: rgba(255, 71, 87, 0.05);
+}
+
+.news-item.positive {
+  border-left-color: var(--success);
+  background: rgba(78, 205, 196, 0.05);
+}
+
+/* Technical Analysis Indicators */
+.indicator-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.indicator-badge.bullish {
+  background: rgba(74, 222, 128, 0.2);
+  color: var(--price-up);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.indicator-badge.bearish {
+  background: rgba(248, 113, 113, 0.2);
+  color: var(--price-down);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.indicator-badge.neutral {
+  background: rgba(255, 230, 109, 0.2);
+  color: var(--warning);
+  border: 1px solid rgba(255, 230, 109, 0.3);
+}
+
+/* Advanced Search and Filters */
+.search-container {
+  position: relative;
+  max-width: 400px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 3rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 0.5rem;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.1);
+  background: var(--bg-tertiary);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+/* Filter Pills */
+.filter-pills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  padding: 0.5rem 1rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-primary);
+  border-radius: 2rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+}
+
+.filter-pill:hover {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.filter-pill.active {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  border-color: var(--primary);
+}
+
+/* Status Indicators */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.status-dot.online {
+  background: var(--success);
+  box-shadow: 0 0 6px rgba(78, 205, 196, 0.5);
+}
+
+.status-dot.offline {
+  background: var(--danger);
+  box-shadow: 0 0 6px rgba(255, 71, 87, 0.5);
+}
+
+.status-dot.warning {
+  background: var(--warning);
+  box-shadow: 0 0 6px rgba(255, 230, 109, 0.5);
+}
+
+/* Loading Spinners */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-primary);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Advanced Tooltips */
+.tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  border: 1px solid var(--border-primary);
+  z-index: 1000;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--border-primary);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.tooltip:hover::before,
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+/* Advanced Modals and Overlays */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 20, 25, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: var(--bg-secondary);
+  border-radius: 1rem;
+  border: 1px solid var(--border-primary);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  position: relative;
+}
+
+.modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  padding: 1.5rem;
+  border-top: 1px solid var(--border-primary);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Advanced Progress Bars */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Advanced Tabs */
+.tab-container {
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.tab-list {
+  display: flex;
+  gap: 0;
+}
+
+.tab-button {
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+  position: relative;
+}
+
+.tab-button:hover {
+  color: var(--text-primary);
+  background: var(--bg-glass);
+}
+
+.tab-button.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.tab-content {
+  padding: 1.5rem 0;
+}
+
+/* Advanced Cards with Actions */
+.action-card {
+  background: var(--bg-card);
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-primary);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.action-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1);
+}
+
+.card-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-secondary);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-footer {
+  padding: 1rem 1.5rem;
+  background: var(--bg-glass);
+  border-top: 1px solid var(--border-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Responsive Grid System */
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-cols-5 { grid-template-columns: repeat(5, 1fr); }
+.grid-cols-6 { grid-template-columns: repeat(6, 1fr); }
+
+@media (max-width: 1024px) {
+  .grid-cols-6 { grid-template-columns: repeat(4, 1fr); }
+  .grid-cols-5 { grid-template-columns: repeat(3, 1fr); }
+  .grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .grid-cols-6,
+  .grid-cols-5,
+  .grid-cols-4,
+  .grid-cols-3,
+  .grid-cols-2 { 
+    grid-template-columns: repeat(1, 1fr); 
+  }
+  
+  .modal-content {
+    margin: 1rem;
+    max-width: calc(100vw - 2rem);
+  }
+  
+  .trading-actions {
+    flex-direction: column;
+  }
+  
+  .filter-pills {
+    justify-content: center;
+  }
+  
+  .tab-list {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  
+  .tab-list::-webkit-scrollbar {
+    display: none;
+  }
+}

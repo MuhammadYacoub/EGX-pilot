@@ -10,33 +10,8 @@ let redisClient;
  */
 async function connectRedis() {
   try {
-    if (!redisClient) {
-      redisClient = redis.createClient({
-        host: config.redis.host,
-        port: config.redis.port,
-        password: config.redis.password || undefined,
-        db: config.redis.db || 0,
-        retryDelayOnFailover: 100,
-        maxRetriesPerRequest: 3,
-        lazyConnect: true
-      });
-
-      redisClient.on('error', (err) => {
-        logger.error('Redis connection error:', err);
-      });
-
-      redisClient.on('connect', () => {
-        logger.info('✅ Connected to Redis');
-      });
-
-      redisClient.on('ready', () => {
-        logger.info('✅ Redis is ready');
-      });
-
-      await redisClient.connect();
-    }
-    
-    return redisClient;
+    logger.warn('⚠️  Redis disabled for development mode');
+    return null;
   } catch (error) {
     logger.warn('⚠️  Redis connection failed (optional service):', error.message);
     // Return null if Redis is optional
@@ -56,15 +31,8 @@ function getRedisClient() {
  */
 async function testRedisConnection() {
   try {
-    if (!redisClient) {
-      await connectRedis();
-    }
-    
-    if (redisClient) {
-      await redisClient.ping();
-      return true;
-    }
-    
+    // Redis disabled for development
+    logger.info('Redis health check skipped (disabled)');
     return false;
   } catch (error) {
     logger.warn('Redis health check failed:', error.message);

@@ -1,80 +1,24 @@
 # Dependencies
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Coverage directory used by tools like istanbul
-coverage/
-*.lcov
-
-# nyc test coverage
-.nyc_output
-
-# Grunt intermediate storage
-.grunt
-
-# Bower dependency directory
-bower_components
-
-# node-waf configuration
-.lock-wscript
-
-# Compiled binary addons
-build/Release
-
-# Dependency directories
-jspm_packages/
-
-# TypeScript v1 declaration files
-typings/
-
-# TypeScript cache
+# Build & Cache
+build/
+.cache/
 *.tsbuildinfo
-
-# Optional npm cache directory
 .npm
-
-# Optional eslint cache
 .eslintcache
-
-# Microbundle cache
 .rpt2_cache/
 .rts2_cache_cjs/
 .rts2_cache_es/
 .rts2_cache_umd/
 
-# Optional REPL history
-.node_repl_history
-
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# Environment files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
-egxpilot.log
-quick-start.log
 
 # Runtime data
 pids
@@ -82,171 +26,27 @@ pids
 *.seed
 *.pid.lock
 
-# Diagnostic reports
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+# Environment files
+.env
+.env.*.local
+.env.local
+.env.development
+.env.production
+.env.test
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Coverage directory
+# Test & Coverage
 coverage/
+.nyc_output
 *.lcov
 
-# nyc test coverage
-.nyc_output
-
-# ESLint cache
-.eslintcache
-
-# Optional REPL history
-.node_repl_history
-
-# Output of 'npm pack'
+# Packaged output
 *.tgz
 
-# Yarn Integrity file
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Other
 .yarn-integrity
-
-# parcel-bundler cache
-.cache
-.parcel-cache
-
-# Next.js build output
-.next
-out
-
-# Nuxt.js build / generate output
-.nuxt
-dist
-
-# Gatsby files
-.cache/
-public
-
-# Vuepress build output
-.vuepress/dist
-
-# Serverless directories
-.serverless/
-
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
-
-# TernJS port file
-.tern-port
-
-# Stores VSCode versions used for testing VSCode extensions
-.vscode-test
-
-# yarn v2
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
-.pnp.*
-
-# Production specific
-/build
-/dist
-
-# Database files
-*.db
-*.sqlite
-*.sqlite3
-
-# Backup files
-*.bak
-*.backup
-*.old
-backups/
-/var/backups/
-
-# SSL Certificates
-*.pem
-*.key
-*.crt
-*.csr
-ssl/
-
-# Monitoring and logs
-/var/log/
-monitoring/data/
-prometheus-data/
-
-# Redis dumps
-dump.rdb
-appendonly.aof
-
-# System files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# IDE files
-.idea/
-.vscode/
-*.swp
-*.swo
-*~
-
-# Temporary files
-tmp/
-temp/
-*.tmp
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Test output
-test-report.json
-test-results/
-
-# Docker
-.docker/
-
-# Local development
-local-config.json
-dev-data/
-
-# Sensitive data
-secrets/
-private/
-*.secret
-*.private
-
-# Production deployment
-deployment/
-releases/
-
-# Cache
-.cache/
-*.cache
-
-# Documentation builds
-docs/_build/
-docs/build/
-
-# Frontend build
-frontend/build/
-frontend/dist/
-frontend/node_modules/
-
-# Static assets (if generated)
-public/assets/
-static/assets/
+.node_repl_history
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json

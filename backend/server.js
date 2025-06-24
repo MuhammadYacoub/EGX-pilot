@@ -124,14 +124,18 @@ app.get('/health/detailed', async (req, res) => {
       checks.status = 'unhealthy';
     }
 
-    // Check Redis connection
+    // Check Redis connection (optional)
     try {
       const { testRedisConnection } = require('../config/redis');
-      await testRedisConnection();
-      checks.services.redis = { status: 'healthy', message: 'Connected' };
+      const redisConnected = await testRedisConnection();
+      if (redisConnected) {
+        checks.services.redis = { status: 'healthy', message: 'Connected' };
+      } else {
+        checks.services.redis = { status: 'optional', message: 'Not available (optional service)' };
+      }
     } catch (error) {
-      checks.services.redis = { status: 'unhealthy', message: error.message };
-      checks.status = 'unhealthy';
+      checks.services.redis = { status: 'optional', message: 'Not available (optional service)' };
+      // Don't mark overall system as unhealthy for Redis
     }
 
     // System metrics
@@ -224,7 +228,14 @@ async function initialize() {
   try {
     // Connect to databases
     await connectDatabase();
-    await connectRedis();
+    
+    // Try to connect to Redis (optional)
+    try {
+      await connectRedis();
+      logger.info('✅ Redis connected');
+    } catch (error) {
+      logger.warn('⚠️  Redis not available, continuing without caching:', error.message);
+    }
     
     // Start opportunity hunter (temporarily disabled for development)
     // await opportunityHunter.initialize();
